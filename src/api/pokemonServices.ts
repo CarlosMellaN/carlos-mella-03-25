@@ -21,7 +21,7 @@ export const getAllPokemons = async (limit = 150, offset = 0) => {
 export const getPokemon = async (id: string) => {
   try {
     const response = await apiClient.get(`pokemon/${id}`);
-    // console.log('response:', response)
+    // console.log("response:", response);
     return response.data;
   } catch (error) {
     console.error("Error fetching pokemon:", error);

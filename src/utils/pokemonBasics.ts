@@ -3,6 +3,7 @@ import type { Pokemon } from "@/types/pokemonTypes";
 export function mapPokemonDetails(pokemonData: any): Pokemon {
   const mappedPokemon = {
     name: pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1),
+    id: pokemonData.id,
     url: pokemonData.species?.url || "",
     imageFront: pokemonData.sprites?.front_default || "",
     imageBack: pokemonData.sprites?.back_default || "",

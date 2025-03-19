@@ -17,13 +17,9 @@ import {
   Legend,
 } from "chart.js";
 
-// Registrar los componentes de Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
-// Definir props
 const props = defineProps<{ stats: { base_stat: number; stat: { name: string } }[] }>();
 
-// Formatear datos para Chart.js
 const chartData = computed(() => {
   if (!props.stats || props.stats.length === 0) return null;
 
@@ -48,12 +44,38 @@ const chartData = computed(() => {
   };
 });
 
-// Opciones del gráfico
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   scales: {
-    y: { beginAtZero: true },
+    y: {
+      beginAtZero: true,
+      ticks: {
+        font: {
+          family: "Poppins, sans-serif", // Usar la fuente Roboto
+          size: 10,
+        },
+      },
+    },
+    x: {
+      beginAtZero: true,
+      ticks: {
+        font: {
+          family: "Poppins, sans-serif", // Usar la fuente Roboto
+          size: 10,
+        },
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      labels: {
+        font: {
+          family: "Poppins, sans-serif", // Usar la fuente Roboto
+          size: 14,
+        },
+      },
+    },
   },
 };
 </script>

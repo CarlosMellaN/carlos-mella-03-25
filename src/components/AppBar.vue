@@ -65,12 +65,12 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
-import { useRoute } from "vue-router"; // Importa useRoute de Vue Router
+import { useRoute } from "vue-router";
 
-const route = useRoute(); // Obtén la ruta actual
+const route = useRoute();
 
 const navigation = [
   { name: "Home", href: "/", current: false },
-  { name: "Equipo", href: "/team", current: false },
+  { name: "Team", href: "/team", current: false },
 ];
 </script>

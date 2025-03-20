@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center bg-gray-50 p-2">
+  <div class="flex flex-col justify-center items-center p-8">
     <img src="@/assets/pokemon_logo.svg" alt="Pokémon not found" class="w-48 h-48 mb-3" />
     <h1 class="text-4xl font-bold text-gray-800 mb-4">¡Oops!</h1>
     <p class="text-lg text-gray-600 mb-4">

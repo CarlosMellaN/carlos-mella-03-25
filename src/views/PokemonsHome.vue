@@ -49,13 +49,13 @@ import { getCardBackgroundClass, getNameTypeClass } from "@/utils/pokemonBackGro
 import type { Pokemon } from "@/types/pokemonTypes";
 import PokemonPagination from "@/components/PokemonPagination.vue";
 
-const TOTAL_POKEMON = 150;
+const maxPokemon = 150;
 const pokemonsList = ref<Pokemon[] | null>(null);
 const page = ref(1);
 const totalPages = computed(() => {
-  return Math.min(6, Math.ceil(TOTAL_POKEMON / limit.value));
+  return Math.min(6, Math.ceil(maxPokemon / limit.value));
 });
-const limit = ref(25); // Cantidad de Pokémon por página
+const limit = ref(25);
 const isLoading = ref(false);
 const totalCount = ref(0);
 
@@ -75,7 +75,6 @@ const getPokemons = async (pageNum: number) => {
     pokemonsList.value = null;
     const offset = getOffset(pageNum);
     const data = await getAllPokemons(limit.value, offset);
-    // console.log(data);
     if (data.count !== totalCount.value) {
       totalCount.value = data.count;
       totalPages.value = Math.ceil(data.count / limit.value);
@@ -85,13 +84,13 @@ const getPokemons = async (pageNum: number) => {
       name: pokemon.name,
       url: pokemon.url,
     }));
+
     const pokemonDetails = await Promise.all(
       basicPokemons.map(async (pokemon: { name: string; url: string }) => {
         const details = await getPokemon(pokemon.name);
         return mapPokemonDetails(details);
       })
     );
-    // console.log(pokemonDetails);
     pokemonsList.value = pokemonDetails;
   } catch (error) {
     console.error("Error al cargar los Pokémon:", error);
@@ -107,4 +106,3 @@ watch(page, (newPage) => {
   getPokemons(newPage);
 });
 </script>
-<style scoped></style>

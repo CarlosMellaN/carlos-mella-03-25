@@ -7,10 +7,9 @@ const apiClient: AxiosInstance = axios.create({
   },
 });
 
-export const getAllPokemons = async (limit = 150, offset = 0) => {
+export const getAllPokemons = async (limit: number, offset: number) => {
   try {
     const response = await apiClient.get(`pokemon?limit=${limit}&offset=${offset}`);
-    // console.log('response:', response)
     return response.data;
   } catch (error) {
     console.error("Error fetching pokemons:", error);
@@ -21,10 +20,29 @@ export const getAllPokemons = async (limit = 150, offset = 0) => {
 export const getPokemon = async (id: string) => {
   try {
     const response = await apiClient.get(`pokemon/${id}`);
-    // console.log("response:", response);
     return response.data;
   } catch (error) {
     console.error("Error fetching pokemon:", error);
+    throw error;
+  }
+};
+
+export const getPokemonSpecies = async (id: string) => {
+  try {
+    const response = await apiClient.get(`pokemon-species/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching pokemon species:", error);
+    throw error;
+  }
+};
+
+export const getEvolutionChainLink = async (id: string) => {
+  try {
+    const response = await apiClient.get(`evolution-chain/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching evolution chain:", error);
     throw error;
   }
 };

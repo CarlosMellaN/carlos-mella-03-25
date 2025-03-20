@@ -42,10 +42,9 @@
 
     <DisclosurePanel class="sm:hidden">
       <div class="space-y-1 px-2 pt-2 pb-3">
-        <DisclosureButton
+        <router-link
           v-for="item in navigation"
           :key="item.name"
-          as="router-link"
           :to="item.href"
           :class="[
             item.href === route.path
@@ -56,7 +55,7 @@
           :aria-current="item.href === route.path ? 'page' : undefined"
         >
           {{ item.name }}
-        </DisclosureButton>
+        </router-link>
       </div>
     </DisclosurePanel>
   </Disclosure>

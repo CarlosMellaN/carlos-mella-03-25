@@ -1,4 +1,4 @@
-import type { Pokemon } from "@/types/pokemonTypes";
+import type { Pokemon, PokemonSpecies, EvolutionChainLink } from "@/types/pokemonTypes";
 
 export function mapPokemonDetails(pokemonData: any): Pokemon {
   const mappedPokemon = {
@@ -20,4 +20,28 @@ export function mapPokemonDetails(pokemonData: any): Pokemon {
   };
 
   return mappedPokemon;
+}
+
+export function mapPokemonSpecies(pokemonSpeciesData: any): PokemonSpecies {
+  const mappedPokemonSpecies = {
+    name: pokemonSpeciesData.name,
+    id: pokemonSpeciesData.id,
+    description: pokemonSpeciesData.flavor_text_entries
+      .find((entry: { language: { name: string } }) => entry.language.name === "en")
+      .flavor_text.replace(/\f/g, "\n"),
+    evolutionChain: pokemonSpeciesData.evolution_chain.url,
+  };
+
+  return mappedPokemonSpecies;
+}
+
+export function mapEvolutionChain(EvolutionChainLinkData: any): EvolutionChainLink {
+  const mappedEvolutionChain = {
+    evolveInitial: EvolutionChainLinkData.chain.species?.name || "",
+    evolveNext: EvolutionChainLinkData.chain.evolves_to[0]?.species?.name || "",
+    evolveFinal: EvolutionChainLinkData.chain.evolves_to[0].evolves_to[0]?.species?.name || "",
+    id: EvolutionChainLinkData.id,
+  };
+
+  return mappedEvolutionChain;
 }

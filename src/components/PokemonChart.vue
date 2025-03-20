@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from "vue";
+import { computed } from "vue";
 import { Bar } from "vue-chartjs";
 import {
   Chart as ChartJS,
@@ -27,7 +27,7 @@ const chartData = computed(() => {
     labels: props.stats.map((s) => s.stat.name.toUpperCase()),
     datasets: [
       {
-        label: "Base Stats",
+        label: "",
         data: props.stats.map((s) => s.base_stat),
         backgroundColor: [
           "rgba(255, 99, 132, 0.6)", // Rojo
@@ -52,7 +52,7 @@ const chartOptions = {
       beginAtZero: true,
       ticks: {
         font: {
-          family: "Poppins, sans-serif", // Usar la fuente Roboto
+          family: "Poppins",
           size: 10,
         },
       },
@@ -61,7 +61,7 @@ const chartOptions = {
       beginAtZero: true,
       ticks: {
         font: {
-          family: "Poppins, sans-serif", // Usar la fuente Roboto
+          family: "Poppins",
           size: 10,
         },
       },
@@ -71,8 +71,7 @@ const chartOptions = {
     legend: {
       labels: {
         font: {
-          family: "Poppins, sans-serif", // Usar la fuente Roboto
-          size: 14,
+          size: -1,
         },
       },
     },

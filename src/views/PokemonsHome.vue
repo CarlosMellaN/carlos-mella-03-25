@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 pt-8 pb-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 pt-8 pb-16 md:mb-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
   >
     <div
       v-for="pokemon in pokemonsList"
@@ -37,7 +37,7 @@
     :totalPages="totalPages"
     :changePage="changePage"
     :getOffset="getOffset"
-    :totalPokemon="TOTAL_POKEMON"
+    class="mb-8"
   />
 </template>
 <script setup lang="ts">

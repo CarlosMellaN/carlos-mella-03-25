@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-end items-center mt-4">
+  <div class="flex justify-end items-center">
     <div class="flex flex-wrap gap-2">
       <span
         class="px-3 py-1 text-sm rounded-full font-medium cursor-pointer group relative"

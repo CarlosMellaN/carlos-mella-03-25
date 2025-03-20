@@ -31,11 +31,6 @@
         <ChevronRightIcon class="size-5" aria-hidden="true" />
       </button>
     </nav>
-    <div class="text-sm text-gray-600 mt-4 bg-gray-50 px-4 py-2 rounded-md shadow-sm">
-      Mostrando <span class="font-medium">{{ getOffset(page) + 1 }}</span> a
-      <span class="font-medium">{{ Math.min(getOffset(page) + limit, totalPokemon) }}</span> de
-      <span class="font-medium">{{ totalPokemon }}</span> Pokémon
-    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -46,6 +41,5 @@ defineProps<{
   totalPages: number;
   changePage: (page: number) => void;
   getOffset: (page: number) => number;
-  totalPokemon: number;
 }>();
 </script>
